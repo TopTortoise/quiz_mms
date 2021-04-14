@@ -1,21 +1,23 @@
 # MMS quiz
 
+- Dont use JButtons, make own classe
+- Page should have a button for getting to the menu, except the menu button
+
 
 
 ```java
-class quiz extends JFrame implements ActionListener{
+abstract class Page extends JFrame implements ActionListener{
 
-    Button[] buttons;
+    JButton[] buttons;
+    JLabel Title;
+    Jlabel[] texts;
+    final Container panel;
 
+    void playMusic(){}
+    
 
-    public void start(){
+    
 
-        Window.show();
-
-
-
-
-    }
     public void actionPerformed(ActionEvent ae){
 
 
@@ -24,19 +26,87 @@ class quiz extends JFrame implements ActionListener{
 
 ```
 
+
 ```java
-class quizmanager{
+class Menu extends Page{
+
+    Menu(JButton[] buttons, Jlabel Title, Jlabel[] texts){}
+    
+
+    void placeButtons(int x, int y){}
+
+    void setButtons(String[] texts){}
+
+    void levelmenu(){}
 
 
-    public static void main(String[] args){
-        
-        quiz.start();
+    public void actionperformed(ActionEvent ae){
+        // select level
+        //options (if necessary)
+        // Exit für Kazue
+    }
+}
+```
 
+```java 
+class Quiz extends Page{
+
+    Picture[] pictures;
+    int points;
+    Quiz(JButton[] buttons, Jlabel Title){
+
+        this.pictures = getPictures();
+
+    }
+    void nextPage(){}
+
+    public void actionperformed(ActionEvent ae){
+        // go to next Page when correct
+        // safe Points
+    }
+
+}
+
+```
+
+```java 
+class End extends Page{
+
+    int Points;
+    Quiz(JButton[] buttons, Jlabel Title){
 
 
     }
 
 
+    public void actionperformed(ActionEvent ae){
+        // back to menu or retry
+    }
 
 }
+
+```
+
+```java
+class Pictures extends ...{}
+
+```
+
+```java
+class Buttons extends JButtons{}
+
+
+```
+
+```java
+class main{
+
+}
+
+
+```
+
+```java
+
+
 ```
