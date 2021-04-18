@@ -88,12 +88,24 @@ class End extends Page{
 ```
 
 ```java
-class Pictures extends ...{}
+
+
+class Picture extends ...{
+
+    String name;
+    Category category;
+
+    Picture pixelate(Picture picture){}
+
+    Picture unpixelate(Picture picture)
+
+
+}
 
 ```
 
 ```java
-class Buttons extends JButtons{}
+Enum Category; //enum class
 
 
 ```
