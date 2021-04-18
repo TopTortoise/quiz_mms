@@ -51,7 +51,7 @@ class Menu extends Page{
 ```java 
 class Quiz extends Page{
 
-    Picture[] pictures;
+    Picture[] pictures;//maybe
     int points;
     Quiz(JButton[] buttons, Jlabel Title){
 
@@ -95,7 +95,7 @@ class Picture extends ...{
     String name;
     Category category;
 
-    Picture pixelate(Picture picture){}
+    Picture pixelate(Picture picture, int level){}
 
     Picture unpixelate(Picture picture)
 
@@ -105,7 +105,10 @@ class Picture extends ...{
 ```
 
 ```java
-Enum Category; //enum class
+Enum Category{
+
+    CATEGORY1,CATEGORY2,...;
+}//enum class
 
 
 ```
