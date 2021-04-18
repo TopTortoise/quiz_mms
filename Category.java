@@ -1,4 +1,4 @@
-Enum Category{
+enum Category{
 
     
 }
