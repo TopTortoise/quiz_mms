@@ -1,4 +1,5 @@
 enum Category{
 
-    
+    FOOD,VEHICLES,ANIMALS,SHIPS,CITIES
+
 }
