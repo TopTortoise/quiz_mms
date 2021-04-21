@@ -15,7 +15,7 @@ abstract class Page extends JFrame implements ActionListener{
     void playMusic(){}
     
 
-    
+    void start(){}    
 
     public void actionPerformed(ActionEvent ae){
 
