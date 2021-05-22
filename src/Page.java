@@ -1,9 +1,9 @@
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
 
 
-abstract class Page {
+abstract class Page extends JFrame implements ActionListener{
 
     JButton[] buttons;
     String title;
