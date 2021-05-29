@@ -17,13 +17,6 @@ abstract class Page {
         this.frame = new JFrame();
         this.panel = new JPanel();
     }
-    protected Page(JButton[] buttons, String title){
-        this.buttons = buttons;
-        this.title = title;
-        this.text = null;
-        this.frame = new JFrame();
-        this.panel = new JPanel();
-    }
 
     void initializeButtons(){
         for (JButton Button : buttons) {
