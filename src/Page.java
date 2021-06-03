@@ -1,5 +1,6 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.GridLayout;
 import javax.swing.*;
 
 
@@ -7,19 +8,28 @@ abstract class Page extends JFrame implements ActionListener{
 
     JButton[] buttons;
     String title;
-    String[] text;
-    JFrame frame;
+    String text;
     JPanel panel;
-    protected Page(JButton[] buttons, String title, String[] text){
+    protected Page(JButton[] buttons, String title, String text){
+        //setup vairiables
         this.buttons = buttons;
         this.title = title;
         this.text = text;
-        this.frame = new JFrame();
         this.panel = new JPanel();
+        //setup the Buttons
+        initializeButtons();
+        //setup panel layout
+        panel.setLayout(new GridLayout(5,0,50,0));
+        //setup the JFrame
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setVisible(true);
     }
-
+    /**
+     * adds buttons to the panel
+     */
     void initializeButtons(){
         for (JButton Button : buttons) {
+            Button.addActionListener(this);
             panel.add(Button);
         }
     }
@@ -47,4 +57,6 @@ abstract class Page extends JFrame implements ActionListener{
         }
     }
 
+    //action when button is pressed
+    abstract public void actionPerformed(ActionEvent e);
 }
