@@ -6,20 +6,16 @@ import javax.swing.*;
 
 abstract class Page extends JFrame implements ActionListener{
 
-    JButton[] buttons;
+   
     String title;
-    String text;
     JPanel panel;
-    protected Page(JButton[] buttons, String title, String text){
+    protected Page( String title){
         //setup vairiables
-        this.buttons = buttons;
+    
         this.title = title;
-        this.text = text;
+        this.setTitle(title);
         this.panel = new JPanel();
         //setup the Buttons
-        initializeButtons();
-        //setup panel layout
-        panel.setLayout(new GridLayout(5,0,50,0));
         //setup the JFrame
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
@@ -27,7 +23,7 @@ abstract class Page extends JFrame implements ActionListener{
     /**
      * adds buttons to the panel
      */
-    void initializeButtons(){
+    void initializeButtons(JButton[] buttons){
         for (JButton Button : buttons) {
             Button.addActionListener(this);
             panel.add(Button);
@@ -37,7 +33,7 @@ abstract class Page extends JFrame implements ActionListener{
      * sets all the buttons to (true) visible or (false) hidden
      * @param visible
      */
-    void setButtonVisible(boolean visible){
+    void setButtonVisible(JButton[] buttons,boolean visible){
         for (JButton Button : buttons) {
             Button.setVisible(true);
         }
@@ -48,7 +44,7 @@ abstract class Page extends JFrame implements ActionListener{
      * @param x
      * @param visible
      */
-    void setButtonVisible(int offset ,int x, boolean visible) throws IndexOutOfBoundsException{
+    void setButtonVisible(JButton[] buttons,int offset ,int x, boolean visible) throws IndexOutOfBoundsException{
         if(x>buttons.length || offset>x || offset<0){
             throw new IndexOutOfBoundsException();
         }
