@@ -138,17 +138,15 @@ public class QuizPage extends Page{
     
     }
 
-    private void exit(){
+    private void exitGame(){
+        //EndPage end = new EndPage
+
         this.dispose();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(level >4){
-            //TODO need endpage
-            //EndPage ending = new EndPage();
-            exit();
-        }
+        
         if(e.getSource().equals(answerPicture)){
             try {
                 answerPicture.pixi();
@@ -161,6 +159,7 @@ public class QuizPage extends Page{
         for (JButton button : buttons) {
             if(e.getSource() == button && button.getName().equals(answerPicture.getName())){
                 level++;
+                if(level >4)exitGame();
                 play();
             }
         }
