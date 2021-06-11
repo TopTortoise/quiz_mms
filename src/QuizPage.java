@@ -115,14 +115,17 @@ public class QuizPage extends Page{
         }
    
         //choose three random buttons
+        Integer[] selectedPics = new Integer[3];
         for (int i = 0; i < buttons.length-1; ) {
             int rand = r.nextInt(answers.length);
-            if(!answers[rand].equals(imagePath) && !Arrays.stream(buttons).anyMatch(button->button.getText()==answers[rand])){
+            if(!answers[rand].equals(imagePath) && !Arrays.asList(selectedPics).contains((Integer)rand)){
                 buttons[i].setText(answers[rand]);
                 buttons[i].setName(answers[rand]);
+                selectedPics[i] = rand;
                 i++;
             }
         }
+
         buttons[3].setName(getImageName(imagePath));
         buttons[3].setText(getImageName(imagePath));
 
