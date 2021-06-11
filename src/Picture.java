@@ -60,16 +60,24 @@ public class Picture extends JButton {
                 }
             }
         }
+        //remove all
         removeAll();
         setIcon(new ImageIcon(tmpimg.getScaledInstance(SCALEDWIDTH, SCAlEDHEIGHT, java.awt.Image.SCALE_SMOOTH))); 
         level-=LEVELDECREASER;
     }
+
+    public static BufferedImage getImage(String imagePath) throws IOException{
+        return ImageIO.read(new File(imagePath));
+
+       
+    }
+   
     public void pixelate(){
         boolean xisterhöht = false;
         BufferedImage tmpimg = img;
         for (int y = 0; y < tmpimg.getHeight(); y++) {         //easiest level biggest number
             for (int x = 0; x < tmpimg.getWidth(); x++) {
-                if (y%2 == 0 && !xisterhöht) {
+                if (y/2 == 0 && !xisterhöht) {
                     x = x + level;
                     xisterhöht = true;
                 }

@@ -23,7 +23,7 @@ class quiz{
         } */
        
         
-        QuizPage p = new QuizPage("ANIMALS");
+        QuizPage p = new QuizPage("VEHICLES");
         //p.add(p.panel);
         //p.pack();
        // p.setSize(2000, 2000);

@@ -29,9 +29,8 @@ public class MenuPage extends Page{
     public void actionPerformed(ActionEvent e) {
         for (int i = 0; i < buttons.length; i++) {
             if (e.getSource() == buttons[i]) {
-                //QuizPage selected = new QuizPage(buttonNames[i]);
-               quiz me = new quiz();
-               me.main(null);
+                QuizPage selected = new QuizPage(buttonNames[i]);
+            
                 this.dispose();
 
             }
