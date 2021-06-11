@@ -39,7 +39,7 @@ public class Picture extends JButton {
     public void setImg(String path) throws IOException{
         img = ImageIO.read(new File(path));
         this.path = path;
-        level = 500;
+        level = 50;
         pixi();
     }
 

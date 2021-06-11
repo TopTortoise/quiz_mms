@@ -109,6 +109,7 @@ public class QuizPage extends Page{
      */
     private void getAnswers(String imagePath){
         String[] answers = folder.list();
+        String imageName = getImageName(imagePath);
         //gets only the image name without path and ".jpg/png"
         for (int i = 0; i < answers.length; i++) {
           answers[i] = getImageName(answers[i]);
@@ -118,7 +119,7 @@ public class QuizPage extends Page{
         Integer[] selectedPics = new Integer[3];
         for (int i = 0; i < buttons.length-1; ) {
             int rand = r.nextInt(answers.length);
-            if(!answers[rand].equals(imagePath) && !Arrays.asList(selectedPics).contains((Integer)rand)){
+            if(!answers[rand].equals(imageName) && !Arrays.asList(selectedPics).contains((Integer)rand)){
                 buttons[i].setText(answers[rand]);
                 buttons[i].setName(answers[rand]);
                 selectedPics[i] = rand;
@@ -126,8 +127,8 @@ public class QuizPage extends Page{
             }
         }
 
-        buttons[3].setName(getImageName(imagePath));
-        buttons[3].setText(getImageName(imagePath));
+        buttons[3].setName(imageName);
+        buttons[3].setText(imageName);
 
         //switch palce
         int rando = r.nextInt(4);
