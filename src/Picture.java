@@ -13,8 +13,8 @@ public class Picture extends JButton {
     final int LEVELDECREASER = 7;
     //TODO might be done needs small adjustments
     public String path;
-    final Timer t;
-    final BufferedImage img;
+    private Timer t;
+    private BufferedImage img;
     private int level;
 
     public Picture(String path) throws IOException {
@@ -35,6 +35,14 @@ public class Picture extends JButton {
        // t.start();
 
     }
+
+    public void setImg(String path) throws IOException{
+        img = ImageIO.read(new File(path));
+        this.path = path;
+        level = 500;
+        pixi();
+    }
+
     public void pixi() throws IOException{
        
         if(level<1)level=1;

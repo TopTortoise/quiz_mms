@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -60,7 +61,7 @@ public class QuizPage extends Page{
             e.printStackTrace();
         }
 
-        panel.add(answerPicture ,BorderLayout.CENTER);
+        panel.add(answerPicture, BorderLayout.CENTER);
         answerPicture.setVisible(true);
 
 
@@ -75,9 +76,8 @@ public class QuizPage extends Page{
         int imageIndex = r.nextInt(pics.length);
         String answer = pics[imageIndex].getPath();
         getAnswers(answer);
-        
         try {
-            answerPicture = new Picture(answer);
+            answerPicture.setImg(answer);
             answerPicture.setName(getImageName(answer));
         } catch (IOException e) {
             // TODO Auto-generated catch block
@@ -93,7 +93,8 @@ public class QuizPage extends Page{
      * @return
      */
     private String getImageName(String imagePath){
-        Pattern pattern = Pattern.compile("(\\w+)\\.(jpg|png)");
+        //\p{L}+
+        Pattern pattern = Pattern.compile("(\\w+)\\.(jpg|png)", Pattern.UNICODE_CHARACTER_CLASS);
 		Matcher matcher = pattern.matcher(imagePath);
         if(matcher.find( )){
         return matcher.group(1);
@@ -108,18 +109,15 @@ public class QuizPage extends Page{
      */
     private void getAnswers(String imagePath){
         String[] answers = folder.list();
-        //gets only the image name without path and ".jpg"
+        //gets only the image name without path and ".jpg/png"
         for (int i = 0; i < answers.length; i++) {
           answers[i] = getImageName(answers[i]);
-          //answers[i] = answers[i].split(".(jpg|png)")[0];
-
         }
    
-        Random r = new Random();
         //choose three random buttons
         for (int i = 0; i < buttons.length-1; ) {
             int rand = r.nextInt(answers.length);
-            if(!answers[rand].equals(imagePath)){
+            if(!answers[rand].equals(imagePath) && !Arrays.stream(buttons).anyMatch(button->button.getText()==answers[rand])){
                 buttons[i].setText(answers[rand]);
                 buttons[i].setName(answers[rand]);
                 i++;
