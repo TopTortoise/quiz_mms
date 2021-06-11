@@ -1,5 +1,6 @@
 import java.awt.FlowLayout;
 import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.io.File;
@@ -20,22 +21,26 @@ public class QuizPage extends Page{
     //private Picture[] imgButtons;
     private JButton[] buttons;
     private Picture answerPicture;
-
+    
     private final File folder;
     private File[] pics;
     //how many levels
     private int level;
     private final Random r = new Random();
 
+    private JPanel picturePanel;
+
     protected QuizPage(String path){
         super(path+" QUIZ ");
         //
+    
         level = 0;
         //
         this.setLayout(new BorderLayout());
         //setup panel
         panel.setLayout(new FlowLayout(FlowLayout.CENTER));
         this.add(panel, BorderLayout.NORTH);
+  
         //question
         this.add(new JLabel("Was ist das?"),BorderLayout.SOUTH);
 
@@ -50,7 +55,7 @@ public class QuizPage extends Page{
             buttons[i].setVisible(true);
             buttons[i].addActionListener(this);
             buttons[i].setFont(DEFAULTFONT);
-            panel.add(buttons[i],BorderLayout.NORTH);
+            panel.add(buttons[i]);
         }
 
         try {
@@ -60,10 +65,8 @@ public class QuizPage extends Page{
             // TODO not sure whaat do here
             e.printStackTrace();
         }
-
-        panel.add(answerPicture, BorderLayout.CENTER);
+        panel.add(answerPicture);
         answerPicture.setVisible(true);
-
 
         this.add(panel);
         this.pack();
