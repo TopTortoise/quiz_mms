@@ -9,10 +9,10 @@ import java.io.IOException;
 
 public class Picture extends JButton {
     final int SCALEDWIDTH = 1000;
-    final int SCAlEDHEIGHT = 300;
+    final int SCAlEDHEIGHT = 1000;
     final int LEVELDECREASER = 7;
-
-    private String path;
+    //TODO might be done needs small adjustments
+    public String path;
     final Timer t;
     final BufferedImage img;
     private int level;
@@ -23,8 +23,9 @@ public class Picture extends JButton {
 
         File file= new File(path);
         img = ImageIO.read(file);
-        Image timg = img.getScaledInstance(SCALEDWIDTH, SCAlEDHEIGHT, java.awt.Image.SCALE_SMOOTH);
-        setIcon(new ImageIcon(timg));
+        setIcon(new ImageIcon(img));
+
+        pixi();
 
         t = new Timer(1000, new ActionListener() {      //10 sek(?)
             @Override public void actionPerformed(ActionEvent e) {
@@ -35,6 +36,7 @@ public class Picture extends JButton {
 
     }
     public void pixi() throws IOException{
+       
         if(level<1)level=1;
 
         BufferedImage imge = ImageIO.read(new File(path));

@@ -1,22 +1,18 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.GridLayout;
 import javax.swing.*;
 
 
 abstract class Page extends JFrame implements ActionListener{
 
-   
     String title;
     JPanel panel;
     protected Page( String title){
         //setup vairiables
-    
         this.title = title;
         this.setTitle(title);
         this.panel = new JPanel();
-        //setup the Buttons
-        //setup the JFrame
+        
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
     }
@@ -39,7 +35,7 @@ abstract class Page extends JFrame implements ActionListener{
         }
     }
     /**
-     * set buttons to visible if true 
+     * set buttons to visible if true from offset to i < x
      * @param offset
      * @param x
      * @param visible
