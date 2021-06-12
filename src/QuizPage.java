@@ -17,7 +17,6 @@ import javax.swing.*;
 public class QuizPage extends Page{
     private final Font DEFAULTFONT = new Font("ARIAl",Font.PLAIN,40);
 
-    //private Picture[] imgButtons;
     private JButton[] buttons;
     private Picture answerPicture;
     
@@ -27,13 +26,11 @@ public class QuizPage extends Page{
     //how many levels
     private int level;
     private final Random r = new Random();
-    private String[] alreadyShown;
     int points;
 
     protected QuizPage(String path){
         super(path+" QUIZ ");
         //initialize variables
-        alreadyShown = new String[6];
         level = 0;
         points = 50;
         //
@@ -79,35 +76,16 @@ public class QuizPage extends Page{
     }
     //changes the names of the buttons
     private void play() {
-        boolean isAlreadyShown = true;
         int imageIndex = r.nextInt(pics.length);
         String answer = pics[imageIndex].getPath();
         //
-   /*      int i;
-        while(isAlreadyShown){
-            for (i = 0; i < alreadyShown.length && !isAlreadyShown; i++) {
-                if(alreadyShown[i] == answer){
-                    isAlreadyShown = true;
-                }else{
-                    
-                }
-            }
-            if(isAlreadyShown){
-                imageIndex = r.nextInt(pics.length);
-                answer = pics[imageIndex].getPath();
-                isAlreadyShown = false;
-            }
-        }
-        int j;
-        for (j = 0; j < alreadyShown.length && alreadyShown[j] != null; j++);
-        alreadyShown[j] = answer; */
 
         getAnswers(answer);
         try {
             answerPicture.setImg(answer);
             answerPicture.setName(getImageName(answer));
         } catch (IOException e) {
-            // TODO Auto-generated catch block
+            // it will never go in here
             e.printStackTrace();
         }
 
@@ -180,7 +158,7 @@ public class QuizPage extends Page{
                 yourPoints.setText(""+points);
                 answerPicture.pixelate();
             } catch (IOException e1) {
-                // TODO Auto-generated catch block
+                // it will never go in here
                 e1.printStackTrace();
             }
             return;

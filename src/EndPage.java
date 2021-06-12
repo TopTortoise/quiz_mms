@@ -71,7 +71,6 @@ public class EndPage extends Page{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		String action = e.getActionCommand();
 		if(action.equals("Exit")) {
 			System.exit(0);
