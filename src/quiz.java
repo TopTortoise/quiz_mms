@@ -1,12 +1,4 @@
-/* import java.awt.event.ActionEvent;
-import java.io.File;
-import java.io.IOException;
-import java.awt.image.BufferedImage;
-import java.awt.GridLayout;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon; */
-import javax.swing.JButton;
-import javax.swing.JLabel;
+
 
 
 class quiz{

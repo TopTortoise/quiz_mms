@@ -1,6 +1,5 @@
 import java.awt.FlowLayout;
 import java.awt.BorderLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.io.File;
@@ -24,17 +23,19 @@ public class QuizPage extends Page{
     
     private final File folder;
     private File[] pics;
+    JLabel yourPoints;
     //how many levels
     private int level;
     private final Random r = new Random();
-
-    private JPanel picturePanel;
+    private String[] alreadyShown;
+    int points;
 
     protected QuizPage(String path){
         super(path+" QUIZ ");
-        //
-    
+        //initialize variables
+        alreadyShown = new String[6];
         level = 0;
+        points = 50;
         //
         this.setLayout(new BorderLayout());
         //setup panel
@@ -42,7 +43,9 @@ public class QuizPage extends Page{
         this.add(panel, BorderLayout.NORTH);
   
         //question
-        this.add(new JLabel("Was ist das?"),BorderLayout.SOUTH);
+        this.yourPoints = new JLabel(""+points);
+        yourPoints.setFont(DEFAULTFONT);
+        this.add(yourPoints,BorderLayout.SOUTH);
 
         //setting up Array for the pictures
         this.folder = new File("pic/"+path);
@@ -62,7 +65,7 @@ public class QuizPage extends Page{
             answerPicture = new Picture(pics[r.nextInt(pics.length)].getPath());
             answerPicture.addActionListener(this);
         } catch (IOException e) {
-            // TODO not sure whaat do here
+            // It will never go in here with this setup
             e.printStackTrace();
         }
         panel.add(answerPicture);
@@ -76,8 +79,29 @@ public class QuizPage extends Page{
     }
     //changes the names of the buttons
     private void play() {
+        boolean isAlreadyShown = true;
         int imageIndex = r.nextInt(pics.length);
         String answer = pics[imageIndex].getPath();
+        //
+   /*      int i;
+        while(isAlreadyShown){
+            for (i = 0; i < alreadyShown.length && !isAlreadyShown; i++) {
+                if(alreadyShown[i] == answer){
+                    isAlreadyShown = true;
+                }else{
+                    
+                }
+            }
+            if(isAlreadyShown){
+                imageIndex = r.nextInt(pics.length);
+                answer = pics[imageIndex].getPath();
+                isAlreadyShown = false;
+            }
+        }
+        int j;
+        for (j = 0; j < alreadyShown.length && alreadyShown[j] != null; j++);
+        alreadyShown[j] = answer; */
+
         getAnswers(answer);
         try {
             answerPicture.setImg(answer);
@@ -86,7 +110,6 @@ public class QuizPage extends Page{
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
 
 
     }
@@ -103,7 +126,6 @@ public class QuizPage extends Page{
         return matcher.group(1);
         }
         return "Failed!";
-
     }
 
     /**
@@ -138,19 +160,23 @@ public class QuizPage extends Page{
         JButton tmp = buttons[3];
         buttons[3] = buttons[rando];
         buttons[rando] = tmp;
+        buttons[rando].setActionCommand("Correct");
     
     }
 
     private void exitGame(){
-        EndPage end = new EndPage
+        EndPage end = new EndPage(points);
+
         this.dispose();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+
         if(e.getSource().equals(answerPicture)){
             try {
+                points -= 5;
+                yourPoints.setText(""+points);
                 answerPicture.pixelate();
             } catch (IOException e1) {
                 // TODO Auto-generated catch block
@@ -158,14 +184,18 @@ public class QuizPage extends Page{
             }
             return;
         }
-        for (JButton button : buttons) {
-            if(e.getSource() == button && button.getName().equals(answerPicture.getName())){
-                level++;
-                if(level >4)exitGame();
-                play();
-            }
+
+        if(e.getActionCommand() == "Correct"){
+            level++;
+            if(level >4)exitGame();
+            play();
+        }else{
+            points -= 5;
         }
-        // TODO Auto-generated method stub
+
+        yourPoints.setText(""+points);
+
+       
     }
     
 }

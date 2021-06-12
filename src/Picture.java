@@ -10,7 +10,7 @@ import java.io.IOException;
 public class Picture extends JButton {
     final int SCALEDWIDTH = 1000;
     final int SCAlEDHEIGHT = 1000;
-    final int LEVELDECREASER = 7;
+    final int LEVELDECREASER = 10;
     //TODO might be done needs small adjustments
     public String path;
     private Timer t;

@@ -13,12 +13,12 @@ import javax.swing.JPanel;
 
 public class EndPage extends Page{
 	
-	int Points;
+	int points;
 	
-	protected EndPage() {
+	protected EndPage(int points) {
 		
 		super("EndPage");
-		
+		this.points = points;
 		//create the panel and set the backroung color
 		panel.setLayout(new BorderLayout());
 		panel.setBackground(new Color(77, 121, 255));
@@ -39,9 +39,8 @@ public class EndPage extends Page{
 		panel.add(y, BorderLayout.NORTH);
 		
 		//create the center panel displaying the result
-		//this.Points = getPoints();
 		JPanel x = new JPanel();
-		JLabel w = new JLabel("Ihre Endnote ist: " + Points);
+		JLabel w = new JLabel("Ihre Endnote ist: " + points);
 		w.setFont(new Font("Times New Roman", Font.PLAIN, 25));
 		x.setLayout(new GridBagLayout());
 		x.add(w);
