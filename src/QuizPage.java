@@ -147,6 +147,7 @@ public class QuizPage extends Page{
             if(!answers[rand].equals(imageName) && !Arrays.asList(selectedPics).contains((Integer)rand)){
                 buttons[i].setText(answers[rand]);
                 buttons[i].setName(answers[rand]);
+                buttons[i].setActionCommand("false");
                 selectedPics[i] = rand;
                 i++;
             }
@@ -154,7 +155,7 @@ public class QuizPage extends Page{
 
         buttons[3].setName(imageName);
         buttons[3].setText(imageName);
-
+        buttons[3].setActionCommand("false");
         //switch palce
         int rando = r.nextInt(4);
         JButton tmp = buttons[3];
@@ -184,11 +185,11 @@ public class QuizPage extends Page{
             }
             return;
         }
-
         if(e.getActionCommand() == "Correct"){
             level++;
-            if(level >4)exitGame();
+            if(level >= 5) exitGame();
             play();
+            
         }else{
             points -= 5;
         }
