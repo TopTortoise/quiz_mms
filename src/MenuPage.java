@@ -14,11 +14,12 @@ public class MenuPage extends Page{
         super("Menu");
         panel.setLayout(new GridLayout(4,0,50,0));
         buttons = new JButton[4];
-        buttonNames = new String[]{"VEHICLES", "ANIMALS", "SHIPS", "CITIES" };
+        buttonNames = new String[]{"Fahrzeuge", "Tiere", "Schiffe", "Städte" };
         for(int i = 0; i < buttons.length; i++){
             buttons[i] = new JButton(buttonNames[i]);
             buttons[i].setFont(DEFAULTFONT);
             buttons[i].setBackground(Color.WHITE);
+            buttons[i].setActionCommand(buttonNames[i]);
         }
         setButtonVisible(buttons, true);
         initializeButtons(buttons);
@@ -27,14 +28,23 @@ public class MenuPage extends Page{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        for (int i = 0; i < buttons.length; i++) {
-            if (e.getSource() == buttons[i]) {
-                QuizPage selected = new QuizPage(buttonNames[i]);
-            
-                this.dispose();
-
-            }
-        }
+        QuizPage quiz;
+       switch (e.getActionCommand()) {
+           case "Fahrzeuge":
+               quiz = new QuizPage("VEHICLES");
+               break;
+            case "Tiere":
+               quiz = new QuizPage("ANIMALS");
+               break;
+            case "Schiffe":
+               quiz = new QuizPage("SHIPS");
+               break;
+            case "Städte":
+               quiz = new QuizPage("CITIES");
+               break;
+           default:
+               break;
+       }
 
 
     }
