@@ -27,6 +27,8 @@ public class EndPage extends Page{
 		JButton[] buttons = new JButton[2];
 		buttons[0] = new JButton("Exit");
 		buttons[1] = new JButton("Retry");
+		setButtonVisible(buttons, true);
+       		initializeButtons(buttons);
 
 		//create the first label at the top and add it to the panel
 		JPanel y = new JPanel();
@@ -77,6 +79,9 @@ public class EndPage extends Page{
 		}
 		else {
 			MenuPage p = new MenuPage();
+			p.add(p.panel);
+	        	p.pack();
+	        	p.setSize(2000, 2000);
 			this.dispose();
 		}
 	}
