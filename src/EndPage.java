@@ -62,6 +62,10 @@ public class EndPage extends Page{
 		k.add(buttons[0]);
 		k.setOpaque(false);
 		panel.add(k, BorderLayout.SOUTH);
+		
+		this.add(panel);
+		this.pack();
+		this.setSize(2000,2000);
 	}
 	
 	@Override
