@@ -142,8 +142,7 @@ public class QuizPage extends Page{
     }
 
     private void exitGame(){
-        //EndPage end = new EndPage
-
+        EndPage end = new EndPage
         this.dispose();
     }
 
