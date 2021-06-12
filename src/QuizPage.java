@@ -152,7 +152,7 @@ public class QuizPage extends Page{
         
         if(e.getSource().equals(answerPicture)){
             try {
-                answerPicture.pixi();
+                answerPicture.pixelate();
             } catch (IOException e1) {
                 // TODO Auto-generated catch block
                 e1.printStackTrace();

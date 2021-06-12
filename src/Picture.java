@@ -25,11 +25,16 @@ public class Picture extends JButton {
         img = ImageIO.read(file);
         setIcon(new ImageIcon(img));
 
-        pixi();
+        pixelate();
 
         t = new Timer(1000, new ActionListener() {      //10 sek(?)
             @Override public void actionPerformed(ActionEvent e) {
-                pixelate();
+                try {
+                    pixelate();
+                } catch (IOException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                }
             }
         });
        // t.start();
@@ -40,10 +45,10 @@ public class Picture extends JButton {
         img = ImageIO.read(new File(path));
         this.path = path;
         level = 50;
-        pixi();
+        pixelate();
     }
 
-    public void pixi() throws IOException{
+    public void pixelate() throws IOException{
        
         if(level<1)level=1;
 
@@ -80,28 +85,5 @@ public class Picture extends JButton {
        
     }
    
-    public void pixelate(){
-        boolean xisterhöht = false;
-        BufferedImage tmpimg = img;
-        for (int y = 0; y < tmpimg.getHeight(); y++) {         //easiest level biggest number
-            for (int x = 0; x < tmpimg.getWidth(); x++) {
-                if (y/2 == 0 && !xisterhöht) {
-                    x = x + level;
-                    xisterhöht = true;
-                }
-                tmpimg.setRGB(x, y, Color.LIGHT_GRAY.getRGB()); //Setting new Color object to the image
-                x = x + level;
-            }
-            xisterhöht = false;
-        }
-        
-       setIcon(new ImageIcon(tmpimg.getScaledInstance(1000, 300, java.awt.Image.SCALE_SMOOTH)));
-        level++;
 
-        if (level > 10) {
-            t.stop();
-        }
-    }
-
-    //Button wo Bild oben ist nach richtem Raten einfach unsichtbar schalten
 }
