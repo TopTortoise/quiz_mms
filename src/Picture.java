@@ -1,7 +1,5 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -10,9 +8,7 @@ public class Picture extends JButton {
     final int SCALEDWIDTH = 1000;
     final int SCAlEDHEIGHT = 1000;
     final int LEVELDECREASER = 10;
-    //TODO might be done needs small adjustments
     public String path;
-    private Timer t;
     private BufferedImage img;
     private int level;
 
@@ -25,18 +21,6 @@ public class Picture extends JButton {
         setIcon(new ImageIcon(img));
 
         pixelate();
-
-        t = new Timer(1000, new ActionListener() {      //10 sek(?)
-            @Override public void actionPerformed(ActionEvent e) {
-                try {
-                    pixelate();
-                } catch (IOException e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                }
-            }
-        });
-       // t.start();
 
     }
 
