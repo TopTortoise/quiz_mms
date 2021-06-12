@@ -30,7 +30,7 @@ public class EndPage extends Page{
 
 		//create the first label at the top and add it to the panel
 		JPanel y = new JPanel();
-		JLabel l = new JLabel("Herzlichen Glückwunsch zum Abschluss des Spiels!");
+		JLabel l = new JLabel("Herzlichen GlÃ¼ckwunsch zum Abschluss des Spiels!");
 		l.setFont(new Font("Grafolita Script", Font.ITALIC, 29));
 		y.add(l);
 		y.setOpaque(false);
@@ -72,7 +72,8 @@ public class EndPage extends Page{
 			System.exit(0);
 		}
 		else {
-			
+			MenuPage p = new MenuPage();
+			this.dispose();
 		}
 	}
 }
