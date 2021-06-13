@@ -5,8 +5,8 @@ import java.io.File;
 import java.io.IOException;
 
 public class Picture extends JButton {
-    final int SCALEDWIDTH = 1000;
-    final int SCAlEDHEIGHT = 1000;
+    final int SCALEDWIDTH = 500;
+    final int SCAlEDHEIGHT = 500;
     final int LEVELDECREASER = 10;
     public String path;
     private BufferedImage img;

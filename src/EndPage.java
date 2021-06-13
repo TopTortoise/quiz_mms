@@ -79,7 +79,7 @@ public class EndPage extends Page{
 			MenuPage p = new MenuPage();
 			p.add(p.panel);
 	        	p.pack();
-	        	p.setSize(2000, 2000);
+	        	p.setSize(1000, 1000);
 			this.dispose();
 		}
 	}
