@@ -40,7 +40,7 @@ public class EndPage extends Page{
 		
 		//create the center panel displaying the result
 		JPanel x = new JPanel();
-		JLabel w = new JLabel("Ihre Endnote ist: " + points);
+		JLabel w = new JLabel("Ihre Endnote ist: " + points + " von 50 Punkten");
 		w.setFont(new Font("Times New Roman", Font.PLAIN, 25));
 		x.setLayout(new GridBagLayout());
 		x.add(w);
@@ -66,7 +66,7 @@ public class EndPage extends Page{
 		
 		this.add(panel);
 		this.pack();
-		this.setSize(1920, 1080);
+		this.setSize(1920, 1000);
 	}
 	
 	@Override
@@ -79,7 +79,7 @@ public class EndPage extends Page{
 			MenuPage p = new MenuPage();
 			p.add(p.panel);
 	        	p.pack();
-	        	p.setSize(1920, 1080);
+	        	p.setSize(1920, 1000);
 			this.dispose();
 		}
 	}

@@ -70,7 +70,7 @@ public class QuizPage extends Page{
 
         this.add(panel);
         this.pack();
-        this.setSize(1920, 1080);
+        this.setSize(1920, 1000);
         play();
 
     }

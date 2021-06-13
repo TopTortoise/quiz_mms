@@ -4,7 +4,7 @@ class quiz{
         MenuPage p = new MenuPage();
         p.add(p.panel);
         p.pack();
-        p.setSize(1920, 1080);
+        p.setSize(1920, 1000);
         //plays music
         Runnable musicpRunner = new Runnable(){
 
