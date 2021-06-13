@@ -47,7 +47,7 @@ public class QuizPage extends Page{
         //setting up Array for the pictures
         this.folder = new File("pic/"+path);
         this.pics = folder.listFiles();
-     
+        
 
         buttons = new JButton[4];
         for (int i = 0; i < buttons.length; i++) {
@@ -70,7 +70,7 @@ public class QuizPage extends Page{
 
         this.add(panel);
         this.pack();
-        this.setSize(1000,1000);
+        this.setSize(1920, 1080);
         play();
 
     }
@@ -113,18 +113,16 @@ public class QuizPage extends Page{
     private void getAnswers(String imagePath){
         String[] answers = folder.list();
         String imageName = getImageName(imagePath);
-        //gets only the image name without path and ".jpg/png"
-        for (int i = 0; i < answers.length; i++) {
-          answers[i] = getImageName(answers[i]);
-        }
+    
    
         //choose three random buttons
         Integer[] selectedPics = new Integer[3];
         for (int i = 0; i < buttons.length-1; ) {
             int rand = r.nextInt(answers.length);
-            if(!answers[rand].equals(imageName) && !Arrays.asList(selectedPics).contains((Integer)rand)){
-                buttons[i].setText(answers[rand]);
-                buttons[i].setName(answers[rand]);
+            if(!getImageName(answers[rand]).equals(imageName) && !Arrays.asList(selectedPics).contains((Integer)rand)){
+                //gets imagename without .jpg||.png
+                buttons[i].setText(getImageName(answers[rand]));
+                buttons[i].setName(getImageName(answers[rand]));
                 buttons[i].setActionCommand("false");
                 selectedPics[i] = rand;
                 i++;

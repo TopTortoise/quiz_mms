@@ -4,10 +4,18 @@ class quiz{
         MenuPage p = new MenuPage();
         p.add(p.panel);
         p.pack();
-        p.setSize(1000, 1000);
+        p.setSize(1920, 1080);
+        //plays music
+        Runnable musicpRunner = new Runnable(){
+
+            @Override
+            public void run() {
+                AudioPlayer a = new AudioPlayer();
+                a.playMusic("loveofsea.wav");
+            }
+        };
+        musicpRunner.run();
         
-        AudioPlayer a = new AudioPlayer();
-        a.playMusic("loveofsea.wav");
    
     }
 
