@@ -7,7 +7,7 @@ import java.io.IOException;
 public class Picture extends JButton {
     final int SCALEDWIDTH = 500;
     final int SCAlEDHEIGHT = 500;
-    final int LEVELDECREASER = 20;
+    final float LEVELDECREASER = 1.5f;
     public String path;
     private BufferedImage img;
     private int level;
@@ -59,8 +59,7 @@ public class Picture extends JButton {
         //remove all
         removeAll();
         setIcon(new ImageIcon(tmpimg.getScaledInstance(SCALEDWIDTH, SCAlEDHEIGHT, java.awt.Image.SCALE_SMOOTH))); 
-        level =(int) (level/1.5f);
-        //level-=LEVELDECREASER;
+        level =(int) (level/LEVELDECREASER);
     }
 
     public static BufferedImage getImage(String imagePath) throws IOException{
