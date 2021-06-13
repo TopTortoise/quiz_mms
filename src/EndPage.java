@@ -66,7 +66,7 @@ public class EndPage extends Page{
 		
 		this.add(panel);
 		this.pack();
-		this.setSize(2000,2000);
+		this.setSize(1000,1000);
 	}
 	
 	@Override
