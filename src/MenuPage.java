@@ -32,15 +32,19 @@ public class MenuPage extends Page{
        switch (e.getActionCommand()) {
            case "Fahrzeuge":
                quiz = new QuizPage("VEHICLES");
+               this.dispose();
                break;
             case "Tiere":
                quiz = new QuizPage("ANIMALS");
+               this.dispose();
                break;
             case "Schiffe":
                quiz = new QuizPage("SHIPS");
+               this.dispose();
                break;
             case "Städte":
                quiz = new QuizPage("CITIES");
+               this.dispose();
                break;
            default:
                break;
