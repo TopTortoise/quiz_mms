@@ -65,8 +65,12 @@ abstract class Page extends JFrame implements ActionListener {
             this.setLocation(oldPage.getLocation());
             this.setExtendedState(oldPage.getExtendedState());
         } else {
-            // default in fullscreen and size if fullscreen is ended
+            // default in fullscreen
             this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        }
+
+        // if fullscreen, take this as fallback size if fullscreen is ended
+        if(this.getExtendedState() == JFrame.MAXIMIZED_BOTH){
             this.setSize(new Dimension(800,600));
         }
 

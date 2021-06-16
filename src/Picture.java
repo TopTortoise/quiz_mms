@@ -35,28 +35,22 @@ public class Picture extends JButton {
 
         if (level < 9) level = 1;
 
-        BufferedImage tmpimg = ImageIO.read(new File(path));
-        int height = tmpimg.getHeight();
-        int width = tmpimg.getWidth();
+        BufferedImage tmpImg = ImageIO.read(new File(path));
 
-        for (int i = 0; i < width; i = i + level) {
-            for (int j = 0; j < height; j = j + level) {
-                int colour = tmpimg.getRGB(i, j);
-                for (int x = 0; x < level; x++) {
-                    if (i + x < width) {
-                        for (int y = 0; y < level; y++) {
-                            if (j + y < height) {
+        int newWidth = tmpImg.getWidth()/level;
+        int newHeight = tmpImg.getHeight()/level;
 
-                                tmpimg.setRGB(i + x, j + y, colour);
-                            }
-                        }
-                    }
-                }
+        BufferedImage newImg = new BufferedImage(newWidth, newHeight, tmpImg.getType());
+
+        for (int i = 0; i < newImg.getWidth(); i = i + 1) {
+            for (int j = 0; j < newImg.getHeight(); j = j + 1) {
+                int colour = tmpImg.getRGB(i*level, j*level);
+                newImg.setRGB(i,j,colour);
             }
         }
         //remove all
         removeAll();
-        setIcon(new ImageIcon(tmpimg.getScaledInstance(SCALEDWIDTH, SCALEDHEIGHT, java.awt.Image.SCALE_SMOOTH)));
+        setIcon(new ImageIcon(newImg.getScaledInstance(SCALEDWIDTH, SCALEDHEIGHT, java.awt.Image.SCALE_SMOOTH)));
         level = (int) (level / LEVELDECREASER);
     }
 
