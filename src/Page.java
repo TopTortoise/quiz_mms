@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -14,7 +15,6 @@ abstract class Page extends JFrame implements ActionListener {
         this.panel = new JPanel();
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setVisible(true);
     }
 
     /**
@@ -52,6 +52,25 @@ abstract class Page extends JFrame implements ActionListener {
         for (int i = offset; i < x; i++) {
             buttons[i].setVisible(visible);
         }
+    }
+
+    /**
+     * set page size as well as position to given page
+     * @param oldPage
+     */
+    void setDimensions(Page oldPage){
+        if(oldPage != null) {
+            // set size/location/fullscreen state of last window
+            this.setSize(oldPage.getSize());
+            this.setLocation(oldPage.getLocation());
+            this.setExtendedState(oldPage.getExtendedState());
+        } else {
+            // default in fullscreen and size if fullscreen is ended
+            this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            this.setSize(new Dimension(800,600));
+        }
+
+        this.setVisible(true);
     }
 
     //action when button is pressed

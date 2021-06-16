@@ -65,7 +65,6 @@ public class EndPage extends Page {
 
         this.add(panel);
         this.pack();
-        this.setSize(1920, 1000);
     }
 
     @Override
@@ -77,8 +76,7 @@ public class EndPage extends Page {
             MenuPage p = new MenuPage();
             p.add(p.panel);
             p.pack();
-            p.setSize(this.getSize());
-            p.setLocation(this.getLocation());
+            p.setDimensions(this);
             this.dispose();
         }
     }

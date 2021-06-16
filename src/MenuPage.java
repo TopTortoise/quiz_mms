@@ -45,8 +45,7 @@ public class MenuPage extends Page {
             default:
                 break;
         }
-        quiz.setSize(this.getSize());
-        quiz.setLocation(this.getLocation());
+        quiz.setDimensions(this);
         this.dispose();
     }
 }

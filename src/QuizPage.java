@@ -68,7 +68,6 @@ public class QuizPage extends Page {
 
         this.add(panel);
         this.pack();
-        this.setSize(1920, 1000);
         play();
 
     }
@@ -139,6 +138,7 @@ public class QuizPage extends Page {
 
     private void exitGame() {
         EndPage end = new EndPage(points);
+        end.setDimensions(this);
 
         this.dispose();
     }
