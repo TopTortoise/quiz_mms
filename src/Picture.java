@@ -35,9 +35,7 @@ public class Picture extends JButton {
 
         if (level < 9) level = 1;
 
-        BufferedImage imge = ImageIO.read(new File(path));
-
-        BufferedImage tmpimg = imge;
+        BufferedImage tmpimg = ImageIO.read(new File(path));
         int height = tmpimg.getHeight();
         int width = tmpimg.getWidth();
 
@@ -45,9 +43,9 @@ public class Picture extends JButton {
             for (int j = 0; j < height; j = j + level) {
                 int colour = tmpimg.getRGB(i, j);
                 for (int x = 0; x < level; x++) {
-                    if (i + x < tmpimg.getWidth()) {
+                    if (i + x < width) {
                         for (int y = 0; y < level; y++) {
-                            if (j + y < tmpimg.getHeight()) {
+                            if (j + y < height) {
 
                                 tmpimg.setRGB(i + x, j + y, colour);
                             }

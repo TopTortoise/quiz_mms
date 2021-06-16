@@ -51,7 +51,6 @@ abstract class Page extends JFrame implements ActionListener {
         }
         for (int i = offset; i < x; i++) {
             buttons[i].setVisible(visible);
-            ;
         }
     }
 

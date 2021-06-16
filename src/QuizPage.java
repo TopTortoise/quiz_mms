@@ -107,11 +107,6 @@ public class QuizPage extends Page {
         return "Failed!";
     }
 
-    /**
-     * gets three random picture names
-     *
-     * @return JButton array
-     */
     private void getAnswers(String imagePath) {
         String[] answers = folder.list();
         String imageName = getImageName(imagePath);
@@ -121,7 +116,7 @@ public class QuizPage extends Page {
         Integer[] selectedPics = new Integer[3];
         for (int i = 0; i < buttons.length - 1; ) {
             int rand = r.nextInt(answers.length);
-            if (!getImageName(answers[rand]).equals(imageName) && !Arrays.asList(selectedPics).contains((Integer) rand)) {
+            if (!getImageName(answers[rand]).equals(imageName) && !Arrays.asList(selectedPics).contains(rand)) {
                 //gets imagename without .jpg||.png
                 buttons[i].setText(getImageName(answers[rand]));
                 buttons[i].setName(getImageName(answers[rand]));

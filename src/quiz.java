@@ -6,15 +6,11 @@ class quiz {
         p.pack();
         p.setSize(1920, 1000);
         //plays music
-        Runnable musicpRunner = new Runnable(){
-
-            @Override
-            public void run() {
-                AudioPlayer a = new AudioPlayer();
-                a.playMusic("loveofsea.wav");
-            }
+        Runnable musicRunner = () -> {
+            AudioPlayer a = new AudioPlayer();
+            a.playMusic("loveofsea.wav");
         };
-        musicpRunner.run();
+        musicRunner.run();
     }
 
 
