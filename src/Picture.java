@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class Picture extends JButton {
     final int SCALEDWIDTH = 500;
-    final int SCAlEDHEIGHT = 500;
+    final int SCALEDHEIGHT = 500;
     final float LEVELDECREASER = 1.5f;
     public String path;
     private BufferedImage img;
@@ -16,7 +16,7 @@ public class Picture extends JButton {
         this.path = path;
         level = 50;
 
-        File file= new File(path);
+        File file = new File(path);
         img = ImageIO.read(file);
         setIcon(new ImageIcon(img));
 
@@ -24,16 +24,16 @@ public class Picture extends JButton {
 
     }
 
-    public void setImg(String path) throws IOException{
+    public void setImg(String path) throws IOException {
         img = ImageIO.read(new File(path));
         this.path = path;
         level = 100;
         pixelate();
     }
 
-    public void pixelate() throws IOException{
-       
-        if(level<9)level=1;
+    public void pixelate() throws IOException {
+
+        if (level < 9) level = 1;
 
         BufferedImage imge = ImageIO.read(new File(path));
 
@@ -41,15 +41,15 @@ public class Picture extends JButton {
         int height = tmpimg.getHeight();
         int width = tmpimg.getWidth();
 
-        for(int i = 0; i < width; i = i + level) {
+        for (int i = 0; i < width; i = i + level) {
             for (int j = 0; j < height; j = j + level) {
-                int colour = tmpimg.getRGB(i,j);
-                for(int x = 0; x < level; x++){
-                    if(i+x < tmpimg.getWidth()){
-                        for(int y = 0; y < level; y++){
-                            if(j+y < tmpimg.getHeight()){
+                int colour = tmpimg.getRGB(i, j);
+                for (int x = 0; x < level; x++) {
+                    if (i + x < tmpimg.getWidth()) {
+                        for (int y = 0; y < level; y++) {
+                            if (j + y < tmpimg.getHeight()) {
 
-                                tmpimg.setRGB( i+x,j+y, colour);
+                                tmpimg.setRGB(i + x, j + y, colour);
                             }
                         }
                     }
@@ -58,15 +58,15 @@ public class Picture extends JButton {
         }
         //remove all
         removeAll();
-        setIcon(new ImageIcon(tmpimg.getScaledInstance(SCALEDWIDTH, SCAlEDHEIGHT, java.awt.Image.SCALE_SMOOTH))); 
-        level =(int) (level/LEVELDECREASER);
+        setIcon(new ImageIcon(tmpimg.getScaledInstance(SCALEDWIDTH, SCALEDHEIGHT, java.awt.Image.SCALE_SMOOTH)));
+        level = (int) (level / LEVELDECREASER);
     }
 
-    public static BufferedImage getImage(String imagePath) throws IOException{
+    public static BufferedImage getImage(String imagePath) throws IOException {
         return ImageIO.read(new File(imagePath));
 
-       
+
     }
-   
+
 
 }

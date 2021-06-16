@@ -1,4 +1,4 @@
-class quiz{
+class quiz {
     public static void main(String[] args) {
         //starts the quiz       
         MenuPage p = new MenuPage();
@@ -15,9 +15,7 @@ class quiz{
             }
         };
         musicpRunner.run();
-        
-   
     }
 
-    
+
 }

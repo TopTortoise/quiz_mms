@@ -4,6 +4,4 @@ public class MusicClip extends AudioClip {
     public MusicClip(Clip clip) {
         super(clip);
     }
-
-  
 }

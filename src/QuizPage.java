@@ -12,14 +12,12 @@ import java.util.regex.Pattern;
 import javax.swing.*;
 
 
-
-
-public class QuizPage extends Page{
-    private final Font DEFAULTFONT = new Font("ARIAl",Font.PLAIN,40);
+public class QuizPage extends Page {
+    private final Font DEFAULTFONT = new Font("ARIAl", Font.PLAIN, 40);
 
     private JButton[] buttons;
     private Picture answerPicture;
-    
+
     private final File folder;
     private File[] pics;
     JLabel yourPoints;
@@ -28,8 +26,8 @@ public class QuizPage extends Page{
     private final Random r = new Random();
     int points;
 
-    protected QuizPage(String path){
-        super(path+" QUIZ ");
+    protected QuizPage(String path) {
+        super(path + " QUIZ ");
         //initialize variables
         level = 0;
         points = 50;
@@ -38,16 +36,16 @@ public class QuizPage extends Page{
         //setup panel
         panel.setLayout(new FlowLayout(FlowLayout.CENTER));
         this.add(panel, BorderLayout.NORTH);
-  
+
         //question
-        this.yourPoints = new JLabel(""+points);
+        this.yourPoints = new JLabel("" + points);
         yourPoints.setFont(DEFAULTFONT);
-        this.add(yourPoints,BorderLayout.SOUTH);
+        this.add(yourPoints, BorderLayout.SOUTH);
 
         //setting up Array for the pictures
-        this.folder = new File("pic/"+path);
+        this.folder = new File("pic/" + path);
         this.pics = folder.listFiles();
-        
+
 
         buttons = new JButton[4];
         for (int i = 0; i < buttons.length; i++) {
@@ -74,6 +72,7 @@ public class QuizPage extends Page{
         play();
 
     }
+
     //changes the names of the buttons
     private void play() {
         int imageIndex = r.nextInt(pics.length);
@@ -91,35 +90,38 @@ public class QuizPage extends Page{
 
 
     }
+
     /**
      * returns only the name of the image without path and .jpg or .png
+     *
      * @param imagePath
      * @return
      */
-    private String getImageName(String imagePath){
+    private String getImageName(String imagePath) {
         //\p{L}+
         Pattern pattern = Pattern.compile("(\\w+)\\.(jpg|png)", Pattern.UNICODE_CHARACTER_CLASS);
-		Matcher matcher = pattern.matcher(imagePath);
-        if(matcher.find( )){
-        return matcher.group(1);
+        Matcher matcher = pattern.matcher(imagePath);
+        if (matcher.find()) {
+            return matcher.group(1);
         }
         return "Failed!";
     }
 
     /**
      * gets three random picture names
+     *
      * @return JButton array
      */
-    private void getAnswers(String imagePath){
+    private void getAnswers(String imagePath) {
         String[] answers = folder.list();
         String imageName = getImageName(imagePath);
-    
-   
+
+
         //choose three random buttons
         Integer[] selectedPics = new Integer[3];
-        for (int i = 0; i < buttons.length-1; ) {
+        for (int i = 0; i < buttons.length - 1; ) {
             int rand = r.nextInt(answers.length);
-            if(!getImageName(answers[rand]).equals(imageName) && !Arrays.asList(selectedPics).contains((Integer)rand)){
+            if (!getImageName(answers[rand]).equals(imageName) && !Arrays.asList(selectedPics).contains((Integer) rand)) {
                 //gets imagename without .jpg||.png
                 buttons[i].setText(getImageName(answers[rand]));
                 buttons[i].setName(getImageName(answers[rand]));
@@ -138,10 +140,9 @@ public class QuizPage extends Page{
         buttons[3] = buttons[rando];
         buttons[rando] = tmp;
         buttons[rando].setActionCommand("Correct");
-    
     }
 
-    private void exitGame(){
+    private void exitGame() {
         EndPage end = new EndPage(points);
 
         this.dispose();
@@ -149,11 +150,10 @@ public class QuizPage extends Page{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
-        if(e.getSource().equals(answerPicture)){
+        if (e.getSource().equals(answerPicture)) {
             try {
                 points -= 5;
-                yourPoints.setText(""+points);
+                yourPoints.setText("" + points);
                 answerPicture.pixelate();
             } catch (IOException e1) {
                 // it will never go in here
@@ -161,18 +161,15 @@ public class QuizPage extends Page{
             }
             return;
         }
-        if(e.getActionCommand() == "Correct"){
+        if (e.getActionCommand() == "Correct") {
             level++;
-            if(level >= 5) exitGame();
+            if (level >= 5) exitGame();
             play();
-            
-        }else{
+
+        } else {
             points -= 5;
         }
 
-        yourPoints.setText(""+points);
-
-       
+        yourPoints.setText("" + points);
     }
-    
 }
